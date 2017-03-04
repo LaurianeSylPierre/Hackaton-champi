@@ -1,4 +1,5 @@
 .idea
 *.scssc
 *.map
+*.ftpconfig
 config/bdd.php
