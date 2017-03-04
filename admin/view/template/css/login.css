@@ -30,7 +30,8 @@
     -ms-transform: scale3d(1, 1, 1);
     transform: scale3d(1, 1, 1); } }
 .login {
-  background-color: #2F3B4C; }
+  background-color: #2F3B4C;
+  font-family: arial; }
   .login .login-form {
     opacity: 0;
     height: 0;

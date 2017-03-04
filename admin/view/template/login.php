@@ -12,12 +12,11 @@
 		<link rel="stylesheet" type="text/css" href="<?=LIBSWEBROOT?>font_awesome/css/font-awesome.min.css">
 		<link rel="stylesheet" type="text/css" href="<?=LIBSWEBROOT?>font_awesome/css/animate.css">
 	</head>
-	<?php \core\HTML\flashmessage\FlashMessage::setFlash("Veuillez vous connecter");?>
 	<?=\core\HTML\flashmessage\FlashMessage::getFlash(); ?>
 	<body class="login">
 		<div class="inner">
 			<div class="login-form active" id="login">
-				<form  action="<?=ADMWEBROOT?>controller/core/auth/connexion/login" method="POST">
+				<form  action="<?=ADMWEBROOT?>controller/login" method="POST">
 					
 					<h1>Connexion à Toad</h1>
 					
