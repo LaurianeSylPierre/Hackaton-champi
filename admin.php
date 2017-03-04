@@ -22,11 +22,15 @@
 		if (strpos($page, 'controller/') !== false) {
 			require_once("admin/".$page.".php");
 		}
-		else if ($page == "login") {
-			require_once("admin/view/template/login.php");
-		}
 		else {
-			require_once("admin/view/template/principal.php");
+			require_once("router/admin_routes.php");
+			
+			if ($page == "login") {
+				require_once("admin/view/template/login.php");
+			}
+			else {
+				require_once("admin/view/template/principal.php");
+			}
 		}
 	}
 	else {
