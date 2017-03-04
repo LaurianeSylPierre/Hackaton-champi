@@ -1,0 +1,19 @@
+Options +FollowSymlinks
+RewriteEngine on
+
+#--------------------------- PARTIE ADMINISTRATOR --------------------------------------#
+#page admin/controller/*** ---> pour les pages liees a l'admin juste de ce site
+RewriteCond %{REQUEST_URI} toad/controller/(.*)
+RewriteRule administrator/([a-zA-Z0-9\-\_\/]*) admin.php?page=$1 [L,QSA]
+
+#page admin
+RewriteCond %{REQUEST_URI} toad
+RewriteRule ([a-zA-Z0-9\-\_\/]*)$ admin.php?page=index [L,QSA]
+
+#page admin/qqch
+RewriteCond %{REQUEST_URI} toad/(.*)$
+RewriteRule administrator/([a-zA-Z0-9\-\_\/]*) admin.php?page=$1 [L,QSA]
+
+#--------------------------- PARTIE FRONT --------------------------------------#
+RewriteCond %{REQUEST_URI} ^([a-zA-Z0-9\-\_\/]*)$
+RewriteRule ^([a-zA-Z0-9\-\_\/]*) index.php?page=$1 [L,QSA]
