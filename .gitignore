@@ -1,1 +1,4 @@
 .idea
+*.scssc
+*.map
+config/*
