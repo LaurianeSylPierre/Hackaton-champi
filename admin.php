@@ -9,6 +9,10 @@
 	require_once("core/Autoloader.php");
 	\core\Autoloader::register();
 	
+	if (!isset($_SESSION['idlogin'])) {
+		require_once("admin/view/template/login.php");
+	}
+	
 	if ((isset($_GET['page'])) && ($_GET['page'] != "")) {
 		$page = $_GET['page'];
 		
