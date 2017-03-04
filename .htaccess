@@ -1,2 +1,5 @@
+Options +FollowSymlinks
+RewriteEngine on
+
 RewriteCond %{REQUEST_URI} ^([a-zA-Z0-9\-\_\/]*)$
 RewriteRule ^([a-zA-Z0-9\-\_\/]*) index.php?page=$1 [L,QSA]
