@@ -1,4 +1,4 @@
 .idea
 *.scssc
 *.map
-config/*
+config/bdd.php
