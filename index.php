@@ -8,6 +8,9 @@
 	require_once("core/Autoloader.php");
 	\core\Autoloader::register();
 	
+	//var bdd
+	require_once("config/bdd.php");
+	
 	if ((isset($_GET['page'])) && ($_GET['page'] != "")) {
 		$page = $_GET['page'];
 		
