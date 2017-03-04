@@ -2,7 +2,7 @@
 This project is done during a Hackaton done at Access Code School in Besançon
 
 ## Version
-Project passed on v0.1 versiob
+Project passed on v0.2 version
 
 ## BDD connexion
 

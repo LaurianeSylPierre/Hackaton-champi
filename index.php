@@ -18,6 +18,12 @@
 			require_once("app/".$page.".php");
 		}
 		else {
+			if (!file_exists(ROOT."app/view/".$page.".php")) {
+				header("HTTP/1.0 404 Not Found");
+				header("location:".WEBROOT."carapace-rouge");
+				die();
+			}
+			
 			require_once("app/view/template/principal.php");
 		}
 	}

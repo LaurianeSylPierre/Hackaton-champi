@@ -1,8 +1,11 @@
 <?php
 	namespace core;
+	use core\Querybuilder;
 	use PDO;
 	
 	class Database {
+		use Querybuilder;
+		
 		private $db_type;
 		private $db_name;
 		private $db_user;

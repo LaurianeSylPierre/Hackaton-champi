@@ -14,4 +14,7 @@
 	define('TPLWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."app/views/template/");
 	
 	//definit le chemin vers la racine de l'admin -> admin/
-	define('ADMWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."admin/");
+	define('ADMWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."toad/");
+	
+	//definit le chemin vers la racine des libs -> libs/
+	define('LIBSWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."libs/");
