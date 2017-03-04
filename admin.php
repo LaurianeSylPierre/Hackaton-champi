@@ -15,9 +15,9 @@
 	if ((isset($_GET['page'])) && ($_GET['page'] != "")) {
 		$page = $_GET['page'];
 		
-		/*if (!isset($_SESSION['idlogin']) && ($page != "login")) {
+		if (!isset($_SESSION['idlogin']) && ($page != "login")) {
 			\core\auth\Connexion::setObgConnecte(WEBROOT."toad/login");
-		}*/
+		}
 		
 		if (strpos($page, 'controller/') !== false) {
 			require_once("admin/".$page.".php");
