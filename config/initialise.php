@@ -17,7 +17,7 @@
 	define('ADMWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."toad/");
 	
 	//definit le chemin vers la controller de l'admin -> admin/controller pour les include
-	define('ADMCTRROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_FILENAME'])."admin/controller");
+	define('ADMCTRROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_FILENAME'])."admin/controller/");
 	
 	//definit le chemin vers la racine des libs -> libs/
 	define('LIBSWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."libs/");
