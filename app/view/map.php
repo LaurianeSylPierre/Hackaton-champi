@@ -11,21 +11,66 @@
 		id: 'mapbox.streets'
 		}).addTo(mymap);
 
+		var LeafIcon = L.Icon.extend({
+    options: {
+        shadowUrl: 'leaf-shadow.png',
+        iconSize:     [38, 95],
+        shadowSize:   [50, 64],
+        iconAnchor:   [22, 94],
+        shadowAnchor: [4, 62],
+        popupAnchor:  [-3, -76]
+    }
+		});
+
+		var greenIcon = new LeafIcon({iconUrl: '<?=TPLWEBROOT?>img/mark_green.svg'}),
+    redIcon = new LeafIcon({iconUrl: '<?=TPLWEBROOT?>img/mark_red.svg'}),
+    orangeIcon = new LeafIcon({iconUrl: '<?=TPLWEBROOT?>img/mark_orange.svg'});
+
 		 var champignons = JSON.parse('<?=$json?>'); // point data
         var champignon = champignons.champignon;
 
-				console.log(champignon.toxique[0] == null);
         for (var i = 0; i < champignon.posx.length; i++) {
-					L.marker([
-					champignon.posx[i], champignon.posy[i]]).addTo(mymap).bindPopup(
-					(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
-					champignon.nom+'<br>'+
-					champignon.posx[i]+', '+champignon.posy[i]+
-					'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/icone_mini_thumb_like.svg"></a>'+
-					'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/icone_mini_thumb_dislike.svg"></a>':
-					champignon.nom+'<br>'+
-					champignon.posx[i]+', '+champignon.posy[i]);
-		}
+					if ((champignon.accessibilite[i] == 'facile') || (champignon.accessibilite[i] == null)) {
+						L.marker([
+							champignon.posx[i], champignon.posy[i]], {icon: greenIcon}).addTo(mymap).bindPopup(
+								(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
+								champignon.nom+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
+								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>':
+								champignon.nom+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
+								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>');
+							}
+
+					else if (champignon.accessibilite[i] == 'moyen') {
+						L.marker([
+							champignon.posx[i], champignon.posy[i]], {icon: orangeIcon}).addTo(mymap).bindPopup(
+								(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
+								champignon.nom+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
+								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>':
+								champignon.nom+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
+								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>');
+							}
+					else {
+						L.marker([
+							champignon.posx[i], champignon.posy[i]], {icon: redIcon}).addTo(mymap).bindPopup(
+								(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
+								champignon.nom+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
+								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>':
+								champignon.nom+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
+								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>');
+							}
+						}
 
        // var marker = L.marker([47.2378, 6.0241]).addTo(mymap);
 
@@ -34,24 +79,24 @@
 		 markers.addLayer(L.marker([47.2374, 6.024]));
 		 mymap.addLayer(markers);*/
 		</script>
-		   
-		   
+
+
 		    <script>
 			    $(document).ready(function() {
 			        $(document).on("click", ".like", function(e) {
                         e.preventDefault();
                         console.log("dgdgdfg");
-                        
+
                         var type = $(this).attr("type");
                         var id_champ = $(this).attr("id-champ");
-                        
+
                         if (type == "like") {
                             var url = "<?=WEBROOT?>controller/note/like";
                         }
                         else {
                             var url = "<?=WEBROOT?>controller/note/dislike";
                         }
-                
+
                         $.ajax({
                             type:"GET",
                             url:url,
