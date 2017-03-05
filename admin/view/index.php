@@ -6,7 +6,7 @@
 		</div>
 		
 		<div class="col-sm-12">
-			<?php if (isset($arr)): ?>
+			<?php if (count($arr["champignon"]["nom"]) > 0): ?>
 				<?php for($i=0 ; $i<count($arr["champignon"]["nom"]) ; $i++):?>
 					<p><?=$arr["champignon"]["nom"][$i]?> <?=$arr["champignon"]["moyenne"][$i]?></p>
 					<a href="<?=ADMWEBROOT?>controller/champignon/supprimer-spot?id_champignon=<?=$arr["champignon"]["id_champignon"][$i]?>&id_localisation=<?=$arr["champignon"]["id_localisation"][$i]?>">Supprimer ce spot</a>

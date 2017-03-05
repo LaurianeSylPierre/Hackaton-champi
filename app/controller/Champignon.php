@@ -48,18 +48,49 @@
 		    return $this->moyenne;
 		}
 		
-		public function getAllChampignon() {
+		/**
+		 * @return array
+		 * fonction qui pemet de récupérer la liste des champignons qui existent
+		 */
+		public function getListeTypeChampignon() {
+			$dbc= App::getDb();
+			
+			$query  = $dbc->select()->from("liste_champignon")->get();
+			
+			foreach ($query as $obj) {
+				$nom[] = $obj->nom;
+			}
+			
+			return $nom;
+		}
+		
+		/**
+		 * fonction pour récpérer tous les champignons
+		 */
+		public function getAllChampignon($nom_champi = null) {
 			$dbc = App::getDb();
 			
-			$query = $dbc->select()
-				->from("champignon")
-				->from("localisation")
-				->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
-				->get();
+			if ($nom_champi == null) {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			else {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.nom", "=", $nom_champi, "AND")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			
 			
 			if (count($query) > 0) {
 				foreach ($query as $obj) {
 					$id_champignon[] = $obj->ID_champignon;
+					$id_localisation[] = $obj->ID_localisation;
 					$nom[] = $obj->nom;
 					$toxique[] = $obj->toxique;
 					$posx[] = $obj->posx;
@@ -109,25 +140,6 @@
 			
 			return 0;
 		}
-		
-		/**
-		 * @param $id_champignon
-		 * @return int
-		 * renvoi la moyenne d'un champignon
-		 */
-		private function getMoyenneChampignon($id_champignon) {
-			$dbc = App::getDb();
-			
-			$query = $dbc->select("moyenne")->from("champignon")->where("ID_champignon", "=", $id_champignon)->get();
-			
-			if (count($query) == 1) {
-				foreach ($query as $obj) {
-					return $obj->moyenne;
-				}
-			}
-			
-			return 50;
-		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
 		
@@ -152,7 +164,7 @@
 			
 			$dbc->update("vote_pos", $this->getLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
 			
-			$this->setCalculMoyenne($id_champignon, "+");
+			$this->setCalculMoyenne($id_champignon);
 		}
 		
 		/**
@@ -164,7 +176,7 @@
 			
 			$dbc->update("vote_neg", $this->getDisLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
 		
-			$this->setCalculMoyenne($id_champignon, "-");
+			$this->setCalculMoyenne($id_champignon);
 		}
 		
 		/**
@@ -172,14 +184,15 @@
 		 * @param $signe
 		 * fonction qui recalcule la moyenne
 		 */
-		public function setCalculMoyenne($id_champignon, $signe) {
+		public function setCalculMoyenne($id_champignon) {
 			$dbc = App::getDb();
 			
-			if ($signe == "-") {
-				$moyenne = $this->getMoyenneChampignon($id_champignon)-1;
-			}
-			else {
-				$moyenne = $this->getMoyenneChampignon($id_champignon)+1;
+			$like = $this->getLikeChampignon($id_champignon);
+			$dislike = $this->getDisLikeChampignon($id_champignon);
+			$total = $like+$dislike;
+			
+			if ($total > 4) {
+				$moyenne = round(($like/$total)*100);
 			}
 			
 			$dbc->update("moyenne", $moyenne)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
