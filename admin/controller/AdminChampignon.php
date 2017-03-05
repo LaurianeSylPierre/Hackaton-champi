@@ -29,26 +29,30 @@
 				->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
 				->get();
 			
-			foreach ($query as $obj) {
-				$id_champignon[] = $obj->ID_champignon;
-				$nom[] = $obj->nom;
-				$toxique[] = $obj->toxique;
-				$posx[] = $obj->posx;
-				$posy[] = $obj->posy;
+			if (count($query) > 0) {
+				foreach ($query as $obj) {
+					$id_champignon[] = $obj->ID_champignon;
+					$nom[] = $obj->nom;
+					$toxique[] = $obj->toxique;
+					$posx[] = $obj->posx;
+					$posy[] = $obj->posy;
+					$accessibilite[] = $obj->accessibilite;
+				}
+				
+				$this->setBadMoyenneChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite);
 			}
-			
-			$this->setBadMoyenneChampignon($id_champignon, $nom, $toxique, $posx, $posy);
 		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
 		
 		//-------------------------- SETTER ----------------------------------------------------------------------------//
-		private function setBadMoyenneChampignon($id_champignon, $nom, $toxique, $posx, $posy) {
+		private function setBadMoyenneChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite) {
 			$this->id_champignon = $id_champignon;
 			$this->nom = $nom;
 			$this->toxique = $toxique;
 			$this->posx = $posx;
 			$this->posy = $posy;
+			$this->accessibilite = $accessibilite;
 		}
 		//-------------------------- END SETTER ----------------------------------------------------------------------------//    
 	}

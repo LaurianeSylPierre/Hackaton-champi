@@ -9,6 +9,7 @@
 		protected $toxique;
 		protected $posx;
 		protected $posy;
+		protected $accessibilite;
 		
 		//-------------------------- BUILDER ----------------------------------------------------------------------------//
 		public function __construct() {
@@ -32,6 +33,9 @@
 		}
 		public function getPosy(){
 		    return $this->posy;
+		}
+		public function getAccessibilite(){
+		    return $this->accessibilite;
 		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
