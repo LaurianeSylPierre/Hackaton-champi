@@ -6,14 +6,13 @@
 		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-		'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+		'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA, ' +
 		'Imagery © <a href="http://mapbox.com">Mapbox</a>',
 		id: 'mapbox.streets'
 		}).addTo(mymap);
 
 		var LeafIcon = L.Icon.extend({
     options: {
-        shadowUrl: 'leaf-shadow.png',
         iconSize:     [38, 95],
         shadowSize:   [50, 64],
         iconAnchor:   [22, 94],
@@ -34,41 +33,41 @@
 						L.marker([
 							champignon.posx[i], champignon.posy[i]], {icon: greenIcon}).addTo(mymap).bindPopup(
 								(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
+								champignon.nom[i]+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
+								'<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">':
 								champignon.nom+'<br>'+
 								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
-								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
-								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>':
-								champignon.nom+'<br>'+
-								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
-								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
-								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>');
+								'<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
+								'<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">');
 							}
 
 					else if (champignon.accessibilite[i] == 'moyen') {
 						L.marker([
 							champignon.posx[i], champignon.posy[i]], {icon: orangeIcon}).addTo(mymap).bindPopup(
 								(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
+								champignon.nom[i]+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
+								'<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">':
 								champignon.nom+'<br>'+
 								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
-								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
-								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>':
-								champignon.nom+'<br>'+
-								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
-								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
-								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>');
+								'<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
+								'<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">');
 							}
 					else {
 						L.marker([
 							champignon.posx[i], champignon.posy[i]], {icon: redIcon}).addTo(mymap).bindPopup(
 								(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
+								champignon.nom[i]+'<br>'+
+								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
+								'<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
+								'<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">':
 								champignon.nom+'<br>'+
 								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
-								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
-								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>':
-								champignon.nom+'<br>'+
-								champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
-								'<a><img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg"></a>'+
-								'<a><img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg"></a>');
+								'<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
+								'<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">');
 							}
 						}
 
