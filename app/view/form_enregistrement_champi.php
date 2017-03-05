@@ -20,19 +20,6 @@
             }
         }
 
-        // Possibilité de l'ajout de plusieurs champignons à la fois dans le futur, peut-être
-        // function ajoutChamp(){
-        //     document.getElementById('cadre').innerHTML = '<label>Type de Champignon : </label><input type="text" name="champignonplus"> <select name="comestibleplus"><option value="comestible">Comestible</option><option value="toxique">Toxique</option></select>';
-        //     document.getElementById('button').style.display = "none";
-        //     document.getElementById('button2').style.display = "block";
-        // }
-        //
-        // function retraitChamp(){
-        //     document.getElementById('cadre').innerHTML = '';
-        //     document.getElementById('button').style.display = "block";
-        //     document.getElementById('button2').style.display = "none";
-        // }
-
         function cb(json) {
             document.getElementById('ville').value = json.address.city;
         }
@@ -60,18 +47,12 @@
             <option value="comestible">Comestible</option>
             <option value="toxique">Toxique</option>
         </select><br/>
-        <!-- Possibilité de l'ajout de plusieurs champignons à la fois dans le futur, peut-être
 
-        <div id="cadre"></div>
-        <input type="button" onClick="ajoutChamp()" value="Ajouter un champi" id="button" style="display: block;"><br/>
-        <input type="button" onClick="retraitChamp()" value="Retirer un champi" id="button2" style="display: none;"><br/> -->
-        <select name="difficulty" id="">
+        <select name="difficulty" id="" required>
             <option value="" selected disabled>Sélectionner une difficulté d'accès</option>
-            <option value="très facile">Très facile</option>
             <option value="facile">Facile</option>
             <option value="moyen">Moyen</option>
             <option value="difficile">Difficile</option>
-            <option value="très facile">Très difficile</option>
         </select><br/>
         <input type="hidden" name="latitude" id="latitude" value="'+ latitude +'">
         <input type="hidden" name="longitude" id="longitude" value="'+ longitude +'">
