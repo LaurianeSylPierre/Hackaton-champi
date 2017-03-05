@@ -48,18 +48,49 @@
 		    return $this->moyenne;
 		}
 		
-		public function getAllChampignon() {
+		/**
+		 * @return array
+		 * fonction qui pemet de récupérer la liste des champignons qui existent
+		 */
+		public function getListeTypeChampignon() {
+			$dbc= App::getDb();
+			
+			$query  = $dbc->select()->from("liste_champignon")->get();
+			
+			foreach ($query as $obj) {
+				$nom[] = $obj->nom;
+			}
+			
+			return $nom;
+		}
+		
+		/**
+		 * fonction pour récpérer tous les champignons
+		 */
+		public function getAllChampignon($nom_champi = null) {
 			$dbc = App::getDb();
 			
-			$query = $dbc->select()
-				->from("champignon")
-				->from("localisation")
-				->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
-				->get();
+			if ($nom_champi == null) {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			else {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.nom", "=", $nom_champi, "AND")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			
 			
 			if (count($query) > 0) {
 				foreach ($query as $obj) {
 					$id_champignon[] = $obj->ID_champignon;
+					$id_localisation[] = $obj->ID_localisation;
 					$nom[] = $obj->nom;
 					$toxique[] = $obj->toxique;
 					$posx[] = $obj->posx;
@@ -70,6 +101,44 @@
 				
 				$this->setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne, $id_localisation);
 			}
+		}
+		
+		/**
+		 * @param $id_champignon
+		 * @return int
+		 * fonction pour récupérer les likes d'un champignon
+		 */
+		private function getLikeChampignon($id_champignon) {
+			$dbc = App::getDb();
+			
+			$query = $dbc->select("vote_pos")->from("champignon")->where("ID_champignon", "=", $id_champignon)->get();
+			
+			if (count($query) == 1) {
+				foreach ($query as $obj) {
+					return $obj->vote_pos;
+				}
+			}
+			
+			return 0;
+		}
+		
+		/**
+		 * @param $id_champignon
+		 * @return int
+		 * fonction qui renvoi le nombre de dislike d'un champignon
+		 */
+		private function getDisLikeChampignon($id_champignon) {
+			$dbc = App::getDb();
+			
+			$query = $dbc->select("vote_neg")->from("champignon")->where("ID_champignon", "=", $id_champignon)->get();
+			
+			if (count($query) == 1) {
+				foreach ($query as $obj) {
+					return $obj->vote_neg;
+				}
+			}
+			
+			return 0;
 		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
@@ -84,6 +153,49 @@
 			$this->posy = $posy;
 			$this->accessibilite = $accessibilite;
 			$this->moyenne = $moyenne;
+		}
+		
+		/**
+		 * @param $id_champignon
+		 * fonction pour ajouter un like au champignon
+		 */
+		public function setAddLike($id_champignon) {
+			$dbc = App::getDb();
+			
+			$dbc->update("vote_pos", $this->getLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
+			
+			$this->setCalculMoyenne($id_champignon);
+		}
+		
+		/**
+		 * @param $id_champignon
+		 * fonction pour ajouter un dislike
+		 */
+		public function setAddDislike($id_champignon) {
+			$dbc = App::getDb();
+			
+			$dbc->update("vote_neg", $this->getDisLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
+		
+			$this->setCalculMoyenne($id_champignon);
+		}
+		
+		/**
+		 * @param $id_champignon
+		 * @param $signe
+		 * fonction qui recalcule la moyenne
+		 */
+		public function setCalculMoyenne($id_champignon) {
+			$dbc = App::getDb();
+			
+			$like = $this->getLikeChampignon($id_champignon);
+			$dislike = $this->getDisLikeChampignon($id_champignon);
+			$total = $like+$dislike;
+			
+			if ($total > 4) {
+				$moyenne = round(($like/$total)*100);
+			}
+			
+			$dbc->update("moyenne", $moyenne)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
 		}
 		//-------------------------- END SETTER ----------------------------------------------------------------------------//    
 	}
