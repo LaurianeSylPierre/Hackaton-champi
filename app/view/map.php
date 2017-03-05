@@ -1,5 +1,4 @@
-
-		<div id="mapid" style="height:500px;"></div>
+	 		<div id="mapid" style="height:500px;"></div>
 		<script>
 
 		//get the marker data
@@ -14,14 +13,21 @@
 
 		 var champignons = JSON.parse('<?=$json?>'); // point data
         var champignon = champignons.champignon;
-		
+
         //console.log(champignon.champignon.posx[0]);
         for (var i = 0; i < champignon.posx.length; i++) {
-			L.marker([champignon.posx[i], champignon.posy[i]]).addTo(mymap);
+					L.marker([
+					champignon.posx[i], champignon.posy[i]]).addTo(mymap).bindPopup(
+					'<div class="col-sm-8">'+champignon.nom+'</p>'+
+					'<p>'+champignon.posx[i]+', '+champignon.posy[i]+'</p>'+
+					'</div>'+
+					'<div class="col-sm-4">'+
+					'<img style="height: 40px;" src="<?=TPLWEBROOT?>img/cs_logo1.svg">'+
+					'</div>');
 		}
-        
+
        // var marker = L.marker([47.2378, 6.0241]).addTo(mymap);
-		
+
 		/* var markers = new L.MarkerClusterGroup();
 		 markers.addLayer(L.marker([47.2378, 6.0241]))
 		 markers.addLayer(L.marker([47.2374, 6.024]));
