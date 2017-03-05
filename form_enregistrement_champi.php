@@ -8,37 +8,40 @@
 
         function init() {
             if(navigator.geolocation){
+                var latitude;
+                var longitude;
                 navigator.geolocation.getCurrentPosition(function(position){
-                    console.log("pouet");
-                    var latitude = position.coords.latitude;
-                    var longitude = position.coords.longitude;
+                    latitude = position.coords.latitude;
+                    longitude = position.coords.longitude;
                     document.getElementById('latitude').value = latitude;
                     document.getElementById('longitude').value = longitude;
                 });
+                return [document.getElementById('latitude').value, document.getElementById('longitude').value];
             }
         }
 
         function ajoutChamp(){
-            var c, c2, ch1, ch2;
-
-            c=document.getElementById('cadre');
-            c2=c.getElementsByTagName('input');
-            ch1=document.createElement('input');
-            ch2=document.createElement('input');
-
-            ch1.setAttribute('type','text');
-            ch1.setAttribute('name','ch1'+c2.length);
-            ch1.setAttribute('readonly','readonly');
-            ch1.setAttribute('value', 'etiquette'+c2.length/2);
-            ch1.setAttribute('style','border:none');
-
-            ch2.setAttribute('type','text');
-            ch2.setAttribute('name','ch2'+c2.length);
-            c.appendChild(ch1);
-            c.appendChild(ch2);
-
-            document.getElementById('sup').style.display='inline';
+            document.getElementById('cadre').innerHTML = '<label>Type de Champignon : </label><input type="text" name="champignonplus"> <select name="comestible"><option value="comestible">Comestible</option><option value="toxique">Toxique</option></select>';
+            document.getElementById('button').style.display = "none";
+            document.getElementById('button2').style.display = "block";
         }
+
+        function retraitChamp(){
+            document.getElementById('cadre').innerHTML = '';
+            document.getElementById('button').style.display = "block";
+            document.getElementById('button2').style.display = "none";
+        }
+
+        function cb(json) {
+            document.getElementById('ville').value = json.address.city;
+        }
+
+        function search() {
+            var set = init();
+            var s = document.createElement('script');
+            s.src = 'http://nominatim.openstreetmap.org/reverse?json_callback=cb&format=json&lat='+ set[0] +'&lon='+ set[1] +'&zoom=27&addressdetails=1';
+            document.getElementsByTagName('head')[0].appendChild(s);
+        };
 
     </script>
     <title>Enregistrer un coin à Champipi</title>
@@ -48,9 +51,8 @@
 
     <form method="post" action="insert_coin_champi.php">
         <label>Contributeur : </label>
-        <input type="text" name="contributeur"><br/>
-        <label>Ville proche : </label>
-        <input type="text" name="ville"><br/>
+        <input type="text" name="contributeur" onblur="search();"><br/>
+        <input type="hidden" name="ville" id="ville"><br/>
         <label>Type de Champignon : </label>
         <input type="text" name="champignon">
         <select name="comestible">
@@ -58,7 +60,8 @@
             <option value="toxique">Toxique</option>
         </select>
         <div id="cadre"></div>
-        <input type="button" onClick="ajoutChamp()" value="Ajouter un champi"><br/>
+        <input type="button" onClick="ajoutChamp()" value="Ajouter un champi" id="button" style="display: block;"><br/>
+        <input type="button" onClick="retraitChamp()" value="Retirer un champi" id="button2" style="display: none;"><br/>
         <select name="difficulty" id="">
             <option value="" selected disabled>Sélectionner une difficulté d'accès</option>
             <option value="très facile">Très facile</option>
