@@ -32,7 +32,7 @@
 
 <div class="container" style="margin-top:100px;">
 	<div class="row">
-		<form method="post" action="<?=WEBROOT?>controller/insert_coin_champi">
+		<form class="col-xs-12" method="post" action="<?=WEBROOT?>controller/insert_coin_champi">
 			<input type="hidden" name="ville" id="ville"><br/>
 			
 			<label>Type de Champignon : </label>
