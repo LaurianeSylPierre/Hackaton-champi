@@ -32,8 +32,9 @@ $pdo->exec("set names utf8");
         $stmt->bindparam(':nom', $nom);
         $stmt->bindparam(':toxique', $toxique);
         $stmt->execute();
-
-        return $stmt;
+	
+		\core\HTML\flashmessage\FlashMessage::setFlash("Votre coin a bien été ajouté", "success");
+		header("location:".WEBROOT."map");
     }
 
     catch (PDOException $e) {

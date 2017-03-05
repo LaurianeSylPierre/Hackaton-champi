@@ -36,7 +36,12 @@
 			<input type="hidden" name="ville" id="ville"><br/>
 			
 			<label>Type de Champignon : </label>
-			<input type="text" name="champignon">
+			<select name="champignon" id="">
+				<option value="" selected disabled >Choisissez le champignon</option>
+				<?php for ($i=0 ; $i<count($liste_champignon) ; $i++) :?>
+					<option value="<?=$liste_champignon[$i]?>"><?=$liste_champignon[$i]?></option>
+				<?php endfor;?>
+			</select>
 			
 			<select name="toxcomestible">
 				<option value="comestible">Comestible</option>
