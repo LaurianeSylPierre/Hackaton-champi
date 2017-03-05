@@ -16,7 +16,7 @@
 	<body class="login">
 		<div class="inner">
 			<div class="login-form active" id="login">
-				<form  action="<?=ADMWEBROOT?>controller/login" method="POST">
+				<form  action="<?=ADMWEBROOT?>controller/login/login" method="POST">
 					
 					<h1>Connexion à Toad</h1>
 					
