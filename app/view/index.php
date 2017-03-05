@@ -43,7 +43,7 @@
                     champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
                     '<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
                     '<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">':
-                    champignon.nom+'<br>'+
+                    champignon.nom[i]+'<br>'+
                     champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
                     '<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
                     '<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">');
@@ -57,7 +57,7 @@
                     champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
                     '<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
                     '<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">':
-                    champignon.nom+'<br>'+
+                    champignon.nom[i]+'<br>'+
                     champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
                     '<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
                     '<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">');
@@ -70,7 +70,7 @@
                     champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
                     '<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
                     '<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">':
-                    champignon.nom+'<br>'+
+                    champignon.nom[i]+'<br>'+
                     champignon.posx[i]+', '+champignon.posy[i]+'<br>'+
                     '<img class="like" type="like" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/like.svg">'+
                     '<img class="like" type="dislike" id-champ="'+champignon.id_champignon[i]+'" style="height: 33px;" src="<?=TPLWEBROOT?>img/unlike.svg">');
