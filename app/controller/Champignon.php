@@ -3,6 +3,8 @@
 	namespace app\controller;
 	
 	
+	use core\App;
+	
 	class Champignon {
 		protected $id_champignon;
 		protected $nom;
