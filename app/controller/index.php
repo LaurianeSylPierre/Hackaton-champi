@@ -1,13 +1,13 @@
 <?php
-	$admin_champi = new \admin\controller\AdminChampignon();
-	$admin_champi->getBadMoyenneChampignon();
+	$champi = new \app\controller\Champignon();
+	$champi->getAllChampignon();
 	
 	$arr["champignon"] = [
-		"nom" => $admin_champi->getNom(),
-		"toxique" => $admin_champi->getToxique(),
-		"accessibilite" => $admin_champi->getAccessibilite(),
-		"posx" => $admin_champi->getPosx(),
-		"posy" => $admin_champi->getPosy(),
+		"nom" => $champi->getNom(),
+		"toxique" => $champi->getToxique(),
+		"accessibilite" => $champi->getAccessibilite(),
+		"posx" => $champi->getPosx(),
+		"posy" => $champi->getPosy()
 	];
 	
 	$json = json_encode($arr);

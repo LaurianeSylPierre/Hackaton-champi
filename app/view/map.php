@@ -12,13 +12,18 @@
 		id: 'mapbox.streets'
 		}).addTo(mymap);
 
-		 var champignon = JSON.parse(<?=$json?>); // point data
-
-		for (var i = 0; i < champignon.length; i++) {
-			L.marker([champignon.posx[i], champignon.posy[i]]).addTo(mymap).bindPopup(champignon.nom[i]+'\n'+champignon.posx[i]+', '+champignon.posx[i]);
+		 var champignons = JSON.parse('<?=$json?>'); // point data
+        var champignon = champignons.champignon;
+		
+        //console.log(champignon.champignon.posx[0]);
+        for (var i = 0; i < champignon.posx.length; i++) {
+			L.marker([champignon.posx[i], champignon.posy[i]]).addTo(mymap);
 		}
-		// var markers = new L.MarkerClusterGroup();
-		// markers.addLayer(L.marker([47.2378, 6.0241]));
-		// markers.addLayer(L.marker([47.2374, 6.024]));
-		// mymap.addLayer(markers);
+        
+       // var marker = L.marker([47.2378, 6.0241]).addTo(mymap);
+		
+		/* var markers = new L.MarkerClusterGroup();
+		 markers.addLayer(L.marker([47.2378, 6.0241]))
+		 markers.addLayer(L.marker([47.2374, 6.024]));
+		 mymap.addLayer(markers);*/
 		</script>
