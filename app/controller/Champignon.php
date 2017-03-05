@@ -12,6 +12,7 @@
 		protected $posx;
 		protected $posy;
 		protected $accessibilite;
+		protected $moyenne;
 		
 		//-------------------------- BUILDER ----------------------------------------------------------------------------//
 		public function __construct() {
@@ -39,6 +40,9 @@
 		public function getAccessibilite(){
 		    return $this->accessibilite;
 		}
+		public function getMoyenne(){
+		    return $this->moyenne;
+		}
 		
 		public function getAllChampignon() {
 			$dbc = App::getDb();
@@ -57,22 +61,24 @@
 					$posx[] = $obj->posx;
 					$posy[] = $obj->posy;
 					$accessibilite[] = $obj->accessibilite;
+					$moyenne[] = $obj->moyenne;
 				}
 				
-				$this->setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite);
+				$this->setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne);
 			}
 		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
 		
 		//-------------------------- SETTER ----------------------------------------------------------------------------//
-		private function setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite) {
+		protected function setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne) {
 			$this->id_champignon = $id_champignon;
 			$this->nom = $nom;
 			$this->toxique = $toxique;
 			$this->posx = $posx;
 			$this->posy = $posy;
 			$this->accessibilite = $accessibilite;
+			$this->moyenne = $moyenne;
 		}
 		//-------------------------- END SETTER ----------------------------------------------------------------------------//    
 	}

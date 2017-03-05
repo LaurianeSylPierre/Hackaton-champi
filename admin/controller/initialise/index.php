@@ -8,6 +8,7 @@
 		"accessibilite" => $admin_champi->getAccessibilite(),
 		"posx" => $admin_champi->getPosx(),
 		"posy" => $admin_champi->getPosy(),
+		"moyenne" => $admin_champi->getMoyenne()
 	];
 	
 	json_encode($arr);

@@ -37,22 +37,15 @@
 					$posx[] = $obj->posx;
 					$posy[] = $obj->posy;
 					$accessibilite[] = $obj->accessibilite;
+					$moyenne[] = $obj->moyenne;
 				}
 				
-				$this->setBadMoyenneChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite);
+				$this->setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne);
 			}
 		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
 		
 		//-------------------------- SETTER ----------------------------------------------------------------------------//
-		private function setBadMoyenneChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite) {
-			$this->id_champignon = $id_champignon;
-			$this->nom = $nom;
-			$this->toxique = $toxique;
-			$this->posx = $posx;
-			$this->posy = $posy;
-			$this->accessibilite = $accessibilite;
-		}
 		//-------------------------- END SETTER ----------------------------------------------------------------------------//    
 	}
