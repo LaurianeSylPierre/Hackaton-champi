@@ -20,11 +20,11 @@
 		<header>
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6">
-						<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+					<div class="col-xs-6">
+						<img class="img-responsive" src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
 					</div>
 					
-					<div id="more_spot" class="col-sm-2 col-sm-offset-4">
+					<div class="col-xs-2 col-xs-offset-4">
 						<button type="button">+</button>
 					</div>
 				</div>
@@ -35,13 +35,15 @@
 		
 		<!-- footer goes here -->
 		<footer>
-			<div class="row">
-				<div class="col-sm-6">
-					<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
-				</div>
-				
-				<div id="more_spot" class="col-sm-2 col-sm-offset-4">
-					<button type="button">+</button>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+					</div>
+					
+					<div id="more_spot" class="col-sm-2 col-sm-offset-4">
+						<button type="button">+</button>
+					</div>
 				</div>
 			</div>
 		</footer>

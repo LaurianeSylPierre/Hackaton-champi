@@ -12,8 +12,8 @@
 	
 	$json = json_encode($arr);
 	
-	echo($json);
+	/*echo($json);
 	
 	echo("<pre>");
 	print_r($arr);
-	echo("</pre>");
+	echo("</pre>");*/
