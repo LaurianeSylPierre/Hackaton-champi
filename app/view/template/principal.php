@@ -21,7 +21,10 @@
 					
 					<div  class="row">
 						<div class="col-xs-6 col-xs-offset-1">
-							<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+							<a href="<?=WEBROOT?>index">
+								<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+							</a>
+							
 						</div>
 						
 						<div id="more_spot" class="col-xs-2 col-xs-offset-3">
