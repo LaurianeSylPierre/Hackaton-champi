@@ -2,8 +2,10 @@ $orange: #F37A3A;
 
 header{
 	background-color: rgba(255, 255, 255, 0.5);
-	position: fixed;
+	position: absolute;
 	top: 0;
+	z-index: 999;
+	width: 100%;
 	
 	button {
 		border:none;
@@ -14,6 +16,8 @@ header{
 
 footer {
 	background-color: rgba(255, 255, 255, 0.5);
-	position: fixed;
+	position: absolute;
 	bottom: 0;
+	z-index: 999;
+	width: 100%;
 }
