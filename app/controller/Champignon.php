@@ -109,25 +109,6 @@
 			
 			return 0;
 		}
-		
-		/**
-		 * @param $id_champignon
-		 * @return int
-		 * renvoi la moyenne d'un champignon
-		 */
-		private function getMoyenneChampignon($id_champignon) {
-			$dbc = App::getDb();
-			
-			$query = $dbc->select("moyenne")->from("champignon")->where("ID_champignon", "=", $id_champignon)->get();
-			
-			if (count($query) == 1) {
-				foreach ($query as $obj) {
-					return $obj->moyenne;
-				}
-			}
-			
-			return 50;
-		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
 		
