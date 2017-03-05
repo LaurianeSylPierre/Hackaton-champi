@@ -16,8 +16,9 @@
 		
 		
 		//-------------------------- GETTER ----------------------------------------------------------------------------//
-		
-		
+		/**
+		 * fonction pour récupérer les champignons avec une mauvaise moyenne
+		 */
 		public function getBadMoyenneChampignon() {
 			$dbc = App::getDb();
 			
