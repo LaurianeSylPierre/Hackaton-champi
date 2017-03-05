@@ -15,17 +15,20 @@
 		<script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
 	</head>
 	<body>
-		<!-- ce fichier incluera les pages des vues -->
-		<!-- header goes here -->
 		<header>
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-6">
-						<img class="img-responsive" src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
-					</div>
+			<div id="header">
+				<div class="container">
 					
-					<div class="col-xs-2 col-xs-offset-4">
-						<button type="button">+</button>
+					<div  class="row">
+						<div class="col-xs-6 col-xs-offset-1">
+							<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+						</div>
+						
+						<div id="more_spot" class="col-xs-2 col-xs-offset-3">
+							<a href="<?=WEBROOT?>ajouter-champignon">
+								<img class="icone" id="cross" src="<?=TPLWEBROOT?>img/button_whitecross.svg"/>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -37,12 +40,21 @@
 		<footer>
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6">
-						<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+					<div class="col-xs-9 col-xs-offset-1">
+						<button type="submit">
+							<img src="<?=TPLWEBROOT?>img/button_loupe.svg"/>
+						</button>
+						<form class="searchbar" method="get" action="<?=WEBROOT?>index">
+							<select name="nom" id="nom">
+								<option selected> Choisissez votre type de champignons</option>
+								<option value="morilles">Morilles</option>
+								<option value="amanites">Amanites </option>
+								<option value="cepes">Cèpes</option>
+							</select>
+						</form>
 					</div>
-					
-					<div id="more_spot" class="col-sm-2 col-sm-offset-4">
-						<button type="button">+</button>
+					<div id="more_spot" class="col-xs-2">
+						<img class="icone" src="<?=TPLWEBROOT?>img/button_info.svg"/>
 					</div>
 				</div>
 			</div>
