@@ -10,6 +10,9 @@
 	//definit la racine du dossier depuis le début du systeme
 	define('ROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_FILENAME']));
 	
+	//definit la racine du dossier depuis le début du systeme
+	define('CTRROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_FILENAME'])."app/controller/");
+	
 	//definit le chemin vers la racine du template -> app/views/template/
 	define('TPLWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."app/views/template/");
 	

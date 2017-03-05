@@ -24,6 +24,7 @@
 				die();
 			}
 			
+			require_once("router/app_routes.php");
 			require_once("app/view/template/principal.php");
 		}
 	}
