@@ -21,7 +21,7 @@
         }
 
         function ajoutChamp(){
-            document.getElementById('cadre').innerHTML = '<label>Type de Champignon : </label><input type="text" name="champignonplus"> <select name="comestible"><option value="comestible">Comestible</option><option value="toxique">Toxique</option></select>';
+            document.getElementById('cadre').innerHTML = '<label>Type de Champignon : </label><input type="text" name="champignonplus"> <select name="comestibleplus"><option value="comestible">Comestible</option><option value="toxique">Toxique</option></select>';
             document.getElementById('button').style.display = "none";
             document.getElementById('button2').style.display = "block";
         }
@@ -55,7 +55,7 @@
         <input type="hidden" name="ville" id="ville"><br/>
         <label>Type de Champignon : </label>
         <input type="text" name="champignon">
-        <select name="comestible">
+        <select name="toxcomestible">
             <option value="comestible">Comestible</option>
             <option value="toxique">Toxique</option>
         </select>
