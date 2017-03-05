@@ -1,5 +1,4 @@
-
-		<div id="mapid" style="height:500px;"></div>
+	 		<div id="mapid" style="height:500px;"></div>
 		<script>
 
 		//get the marker data
@@ -14,14 +13,22 @@
 
 		 var champignons = JSON.parse('<?=$json?>'); // point data
         var champignon = champignons.champignon;
-		
-        //console.log(champignon.champignon.posx[0]);
+
+				console.log(champignon.toxique[0] == null);
         for (var i = 0; i < champignon.posx.length; i++) {
-			L.marker([champignon.posx[i], champignon.posy[i]]).addTo(mymap);
+					L.marker([
+					champignon.posx[i], champignon.posy[i]]).addTo(mymap).bindPopup(
+					(champignon.toxique[i] == null)?'<img style="height: 33px; float: right;" src="<?=TPLWEBROOT?>img/icone_mini_skull.svg">'+
+					champignon.nom+'<br>'+
+					champignon.posx[i]+', '+champignon.posy[i]+
+					'<a><img style="height: 33px;" src="<?=TPLWEBROOT?>img/icone_mini_thumb_like.svg"></a>'+
+					'<a><img style="height: 33px;" src="<?=TPLWEBROOT?>img/icone_mini_thumb_dislike.svg"></a>':
+					champignon.nom+'<br>'+
+					champignon.posx[i]+', '+champignon.posy[i]);
 		}
-        
+
        // var marker = L.marker([47.2378, 6.0241]).addTo(mymap);
-		
+
 		/* var markers = new L.MarkerClusterGroup();
 		 markers.addLayer(L.marker([47.2378, 6.0241]))
 		 markers.addLayer(L.marker([47.2374, 6.024]));
