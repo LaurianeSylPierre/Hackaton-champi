@@ -14,7 +14,7 @@
 	define('CTRROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_FILENAME'])."app/controller/");
 	
 	//definit le chemin vers la racine du template -> app/views/template/
-	define('TPLWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."app/views/template/");
+	define('TPLWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."app/view/template/");
 	
 	//definit le chemin vers la racine de l'admin -> admin/
 	define('ADMWEBROOT', str_replace("$page_root", '', $_SERVER['SCRIPT_NAME'])."toad/");
