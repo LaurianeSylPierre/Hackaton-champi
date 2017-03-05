@@ -20,17 +20,18 @@
             }
         }
 
-        function ajoutChamp(){
-            document.getElementById('cadre').innerHTML = '<label>Type de Champignon : </label><input type="text" name="champignonplus"> <select name="comestibleplus"><option value="comestible">Comestible</option><option value="toxique">Toxique</option></select>';
-            document.getElementById('button').style.display = "none";
-            document.getElementById('button2').style.display = "block";
-        }
-
-        function retraitChamp(){
-            document.getElementById('cadre').innerHTML = '';
-            document.getElementById('button').style.display = "block";
-            document.getElementById('button2').style.display = "none";
-        }
+        // Possibilité de l'ajout de plusieurs champignons à la fois dans le futur, peut-être
+        // function ajoutChamp(){
+        //     document.getElementById('cadre').innerHTML = '<label>Type de Champignon : </label><input type="text" name="champignonplus"> <select name="comestibleplus"><option value="comestible">Comestible</option><option value="toxique">Toxique</option></select>';
+        //     document.getElementById('button').style.display = "none";
+        //     document.getElementById('button2').style.display = "block";
+        // }
+        //
+        // function retraitChamp(){
+        //     document.getElementById('cadre').innerHTML = '';
+        //     document.getElementById('button').style.display = "block";
+        //     document.getElementById('button2').style.display = "none";
+        // }
 
         function cb(json) {
             document.getElementById('ville').value = json.address.city;
@@ -49,7 +50,7 @@
 
 <body onload="init();">
 
-    <form method="post" action="insert_coin_champi.php">
+    <form method="post" action="<?=WEBROOT?>controller/insert_coin_champi">
         <label>Contributeur : </label>
         <input type="text" name="contributeur" onblur="search();"><br/>
         <input type="hidden" name="ville" id="ville"><br/>
@@ -58,10 +59,12 @@
         <select name="toxcomestible">
             <option value="comestible">Comestible</option>
             <option value="toxique">Toxique</option>
-        </select>
+        </select><br/>
+        <!-- Possibilité de l'ajout de plusieurs champignons à la fois dans le futur, peut-être
+
         <div id="cadre"></div>
         <input type="button" onClick="ajoutChamp()" value="Ajouter un champi" id="button" style="display: block;"><br/>
-        <input type="button" onClick="retraitChamp()" value="Retirer un champi" id="button2" style="display: none;"><br/>
+        <input type="button" onClick="retraitChamp()" value="Retirer un champi" id="button2" style="display: none;"><br/> -->
         <select name="difficulty" id="">
             <option value="" selected disabled>Sélectionner une difficulté d'accès</option>
             <option value="très facile">Très facile</option>
