@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>ChmapiSpot</title>
+		<title>ChampiSpot</title>
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1">
 		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">

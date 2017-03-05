@@ -1,5 +1,6 @@
 <?php
-	namespace core\database;
+	namespace core;
+	use core\Querybuilder;
 	use PDO;
 	
 	class Database {

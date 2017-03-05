@@ -1,24 +1,41 @@
 <?php
-	namespace core;
+	
+	namespace app\controller;
 	
 	
-	class App {
-		private static $database;
+	class Champignon {
+		protected $id_champignon;
+		protected $nom;
+		protected $toxique;
+		protected $posx;
+		protected $posy;
+		protected $accessibilite;
 		
 		//-------------------------- BUILDER ----------------------------------------------------------------------------//
+		public function __construct() {
+			
+		}
 		//-------------------------- END BUILDER ----------------------------------------------------------------------------//
 		
 		
 		//-------------------------- GETTER ----------------------------------------------------------------------------//
-		/**
-		 * @return Database
-		 * renvoi une instance de la classe Database
-		 */
-		public static function getDb() {
-			if (self::$database == null) {
-				self::$database = new Database(DB_TYPE, DB_NAME, DB_USER, DB_PASS, DB_HOST);
-			}
-			return self::$database;
+		public function getIdChampignon(){
+			return $this->id_champignon;
+		}
+		public function getNom(){
+			return $this->nom;
+		}
+		public function getToxique(){
+		    return $this->toxique;
+		}
+		public function getPosx(){
+		    return $this->posx;
+		}
+		public function getPosy(){
+		    return $this->posy;
+		}
+		public function getAccessibilite(){
+		    return $this->accessibilite;
 		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
