@@ -164,7 +164,7 @@
 			
 			$dbc->update("vote_pos", $this->getLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
 			
-			$this->setCalculMoyenne($id_champignon, "+");
+			$this->setCalculMoyenne($id_champignon);
 		}
 		
 		/**
@@ -176,7 +176,7 @@
 			
 			$dbc->update("vote_neg", $this->getDisLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
 		
-			$this->setCalculMoyenne($id_champignon, "-");
+			$this->setCalculMoyenne($id_champignon);
 		}
 		
 		/**
@@ -184,7 +184,7 @@
 		 * @param $signe
 		 * fonction qui recalcule la moyenne
 		 */
-		public function setCalculMoyenne($id_champignon, $signe) {
+		public function setCalculMoyenne($id_champignon) {
 			$dbc = App::getDb();
 			
 			$like = $this->getLikeChampignon($id_champignon);

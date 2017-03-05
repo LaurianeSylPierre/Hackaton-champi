@@ -8,6 +8,8 @@
 	}
 	
 	$arr["champignon"] = [
+		"id_champignon" => $champi->getIdChampignon(),
+		"id_localisation" => $champi->getIdLocalisation(),
 		"nom" => $champi->getNom(),
 		"toxique" => $champi->getToxique(),
 		"accessibilite" => $champi->getAccessibilite(),
