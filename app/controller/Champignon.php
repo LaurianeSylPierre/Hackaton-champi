@@ -67,14 +67,25 @@
 		/**
 		 * fonction pour récpérer tous les champignons
 		 */
-		public function getAllChampignon() {
+		public function getAllChampignon($nom_champi = null) {
 			$dbc = App::getDb();
 			
-			$query = $dbc->select()
-				->from("champignon")
-				->from("localisation")
-				->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
-				->get();
+			if ($nom_champi == null) {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			else {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.nom", "=", $nom_champi, "AND")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			
 			
 			if (count($query) > 0) {
 				foreach ($query as $obj) {
@@ -153,7 +164,7 @@
 			
 			$dbc->update("vote_pos", $this->getLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
 			
-			$this->setCalculMoyenne($id_champignon, "+");
+			$this->setCalculMoyenne($id_champignon);
 		}
 		
 		/**
@@ -165,7 +176,7 @@
 			
 			$dbc->update("vote_neg", $this->getDisLikeChampignon($id_champignon)+1)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
 		
-			$this->setCalculMoyenne($id_champignon, "-");
+			$this->setCalculMoyenne($id_champignon);
 		}
 		
 		/**
@@ -173,7 +184,7 @@
 		 * @param $signe
 		 * fonction qui recalcule la moyenne
 		 */
-		public function setCalculMoyenne($id_champignon, $signe) {
+		public function setCalculMoyenne($id_champignon) {
 			$dbc = App::getDb();
 			
 			$like = $this->getLikeChampignon($id_champignon);
