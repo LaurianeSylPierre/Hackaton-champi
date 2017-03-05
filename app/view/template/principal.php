@@ -18,13 +18,15 @@
 		<!-- ce fichier incluera les pages des vues -->
 		<!-- header goes here -->
 		<header>
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-1">
-					<img src="<?=TPLWEBROOT?>template/cs_logo1.svg"/>
-				</div>
-				
-				<div id="more_spot" class="col-sm-2 col-sm-offset-2">
-					<button type="button">+</button>
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-6">
+						<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+					</div>
+					
+					<div id="more_spot" class="col-sm-2 col-sm-offset-4">
+						<button type="button">+</button>
+					</div>
 				</div>
 			</div>
 		</header>
@@ -32,5 +34,16 @@
 		<?php require_once(ROOT."app/view/".$page.".php") ?>
 		
 		<!-- footer goes here -->
+		<footer>
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="<?=TPLWEBROOT?>img/cs_logo1.svg"/>
+				</div>
+				
+				<div id="more_spot" class="col-sm-2 col-sm-offset-4">
+					<button type="button">+</button>
+				</div>
+			</div>
+		</footer>
 	</body>
 </html>
