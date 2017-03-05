@@ -1,5 +1,5 @@
 
-		<div id="mapid"></div>
+		<div id="mapid" style="height:500px;"></div>
 		<script>
 
 		//get the marker data
@@ -12,10 +12,10 @@
 		id: 'mapbox.streets'
 		}).addTo(mymap);
 
-		// var chamignons = ""; // point data
+		 var champignon = JSON.parse(<?=$json?>); // point data
 
 		for (var i = 0; i < champignon.length; i++) {
-			L.marker([champignon.posx[i], champignon.posy[i]).addTo(mymap).bindPopup(champignon.nom[i]+'\n'+champignon.posx[i]+', '+champignon.posx[i]);
+			L.marker([champignon.posx[i], champignon.posy[i]]).addTo(mymap).bindPopup(champignon.nom[i]+'\n'+champignon.posx[i]+', '+champignon.posx[i]);
 		}
 		// var markers = new L.MarkerClusterGroup();
 		// markers.addLayer(L.marker([47.2378, 6.0241]));
