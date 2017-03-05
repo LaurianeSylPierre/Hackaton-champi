@@ -12,6 +12,8 @@
 	
 	$json = json_encode($arr);
 	
+	$liste_champignon = $champi->getListeTypeChampignon();
+	
 	/*echo($json);
 	
 	echo("<pre>");

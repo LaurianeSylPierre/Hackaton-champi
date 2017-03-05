@@ -48,6 +48,25 @@
 		    return $this->moyenne;
 		}
 		
+		/**
+		 * @return array
+		 * fonction qui pemet de récupérer la liste des champignons qui existent
+		 */
+		public function getListeTypeChampignon() {
+			$dbc= App::getDb();
+			
+			$query  = $dbc->select()->from("liste_champignon")->get();
+			
+			foreach ($query as $obj) {
+				$nom[] = $obj->nom;
+			}
+			
+			return $nom;
+		}
+		
+		/**
+		 * fonction pour récpérer tous les champignons
+		 */
 		public function getAllChampignon() {
 			$dbc = App::getDb();
 			
@@ -60,6 +79,7 @@
 			if (count($query) > 0) {
 				foreach ($query as $obj) {
 					$id_champignon[] = $obj->ID_champignon;
+					$id_localisation[] = $obj->ID_localisation;
 					$nom[] = $obj->nom;
 					$toxique[] = $obj->toxique;
 					$posx[] = $obj->posx;
