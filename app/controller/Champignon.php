@@ -175,11 +175,12 @@
 		public function setCalculMoyenne($id_champignon, $signe) {
 			$dbc = App::getDb();
 			
-			if ($signe == "-") {
-				$moyenne = $this->getMoyenneChampignon($id_champignon)-1;
-			}
-			else {
-				$moyenne = $this->getMoyenneChampignon($id_champignon)+1;
+			$like = $this->getLikeChampignon($id_champignon);
+			$dislike = $this->getDisLikeChampignon($id_champignon);
+			$total = $like+$dislike;
+			
+			if ($total > 4) {
+				$moyenne = round(($like/$total)*100);
 			}
 			
 			$dbc->update("moyenne", $moyenne)->from("champignon")->where("ID_champignon", "=", $id_champignon)->set();
