@@ -67,14 +67,25 @@
 		/**
 		 * fonction pour récpérer tous les champignons
 		 */
-		public function getAllChampignon() {
+		public function getAllChampignon($nom_champi = null) {
 			$dbc = App::getDb();
 			
-			$query = $dbc->select()
-				->from("champignon")
-				->from("localisation")
-				->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
-				->get();
+			if ($nom_champi == null) {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			else {
+				$query = $dbc->select()
+					->from("champignon")
+					->from("localisation")
+					->where("champignon.nom", "=", $nom_champi, "AND")
+					->where("champignon.ID_localisation", "=", "localisation.ID_localisation", "", true)
+					->get();
+			}
+			
 			
 			if (count($query) > 0) {
 				foreach ($query as $obj) {
