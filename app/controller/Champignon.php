@@ -7,6 +7,7 @@
 	
 	class Champignon {
 		protected $id_champignon;
+		protected $id_localisation;
 		protected $nom;
 		protected $toxique;
 		protected $posx;
@@ -24,6 +25,9 @@
 		//-------------------------- GETTER ----------------------------------------------------------------------------//
 		public function getIdChampignon(){
 			return $this->id_champignon;
+		}
+		public function getIdLocalisation(){
+		    return $this->id_localisation;
 		}
 		public function getNom(){
 			return $this->nom;
@@ -64,15 +68,16 @@
 					$moyenne[] = $obj->moyenne;
 				}
 				
-				$this->setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne);
+				$this->setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne, $id_localisation);
 			}
 		}
 		//-------------------------- END GETTER ----------------------------------------------------------------------------//
 		
 		
 		//-------------------------- SETTER ----------------------------------------------------------------------------//
-		protected function setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne) {
+		protected function setChampignon($id_champignon, $nom, $toxique, $posx, $posy, $accessibilite, $moyenne, $id_localisation) {
 			$this->id_champignon = $id_champignon;
+			$this->id_localisation = $id_localisation;
 			$this->nom = $nom;
 			$this->toxique = $toxique;
 			$this->posx = $posx;
