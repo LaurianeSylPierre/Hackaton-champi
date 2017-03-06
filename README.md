@@ -1,5 +1,5 @@
 # Hackaton-champi
-This project is done during a Hackaton done at Access Code School in Besançon
+This project was done during a Hackaton done at Access Code School in Besançon. It was made in less than 48 hours with a group of 4 to 8 persons.
 
 ## Version
 Project passed on v0.4 version
